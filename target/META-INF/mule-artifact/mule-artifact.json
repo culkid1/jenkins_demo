@@ -1,0 +1,29 @@
+{
+  "configs": [
+    "3rd_proj.xml"
+  ],
+  "secureProperties": [],
+  "redeploymentEnabled": true,
+  "name": "org.mule.migrated:3rd_proj:1.0.0-M4-SNAPSHOT",
+  "minMuleVersion": "4.4.0",
+  "requiredProduct": "MULE_EE",
+  "classLoaderModelLoaderDescriptor": {
+    "id": "mule",
+    "attributes": {
+      "exportedPackages": [],
+      "exportedResources": [
+        "3rd_proj.xml",
+        "application-types.xml",
+        "log4j2.xml",
+        "migration/attributes2inboundProperties.dwl",
+        "migration/HttpListener.dwl",
+        "migration/HttpRequester.dwl",
+        "mule-app.properties"
+      ]
+    }
+  },
+  "bundleDescriptorLoader": {
+    "id": "mule",
+    "attributes": {}
+  }
+}

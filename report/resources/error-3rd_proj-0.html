@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Mule Migratiol Assistant Report</title>
+    <link rel="stylesheet" type="text/css" href="../assets/styles/mulesoft-styles.css">
+    <link rel="stylesheet" type="text/css" href="../assets/styles/tsorter.css">
+</head>
+<body>
+    <div class="mulesoft-topbar">
+        <div class="mulesoft-appbar">
+            <div class="muleicon muleicon-logo"></div>
+            <div class="anypoint-brand">Mule Migration Assistant 1.0.0</div>
+        </div>
+    </div>
+    <div class="col-md-2 col-md-offset-1 sidemenu">
+        <ul class="sidemenu-back">
+            <li><a href="../summary.html">Summary</a></li>
+        </ul>
+    </div>
+    <div class="col-md-8">
+        <h2 class="text-bold">Issues found on: <span class="text-italic text-normal">3rd_proj.xml</span></h2>
+        <h4 class="text-bold">Description: <span class="text-italic text-normal">'workDirectory' is not needed in Mule 4 File connector. The source file is locked, so there is no need to move it to a temporary location.</span></h4>
+        <h4 class="text-bold">Documentation: </h4>
+            <h4><a href="https://docs.mulesoft.com/mule-runtime/4.3/migration-connectors-file#file_configs">https://docs.mulesoft.com/mule-runtime/4.3/migration-connectors-file#file_configs</a></h4>
+        <hr>
+        <br>
+            <div class="col-md-12">
+                <h4 class="text-bold">
+                    Line: <span class="text-italic text-normal">12</span>&nbsp;
+                    Column: <span class="text-italic text-normal">46</span>
+                </h4>
+                <br>
+                <pre>&lt;file:config name=&quot;File&quot; writeToDirectory=&quot;E:\&quot; readFromDirectory=&quot;E:\&quot; workDirectory=&quot;E:\&quot; autoDelete=&quot;true&quot; validateConnections=&quot;true&quot; doc:name=&quot;File&quot;&gt;
+    &lt;file:connection workingDir=&quot;.&quot; /&gt;
+&lt;/file:config&gt;</pre>
+                <hr>
+            </div>
+    </div>
+</body>
+</html>

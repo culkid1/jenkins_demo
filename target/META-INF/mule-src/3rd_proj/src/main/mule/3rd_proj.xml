@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mule xmlns:email="http://www.mulesoft.org/schema/mule/email" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:compatibility="http://www.mulesoft.org/schema/mule/compatibility" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns:file="http://www.mulesoft.org/schema/mule/file" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd http://www.mulesoft.org/schema/mule/file http://www.mulesoft.org/schema/mule/file/current/mule-file.xsd http://www.mulesoft.org/schema/mule/compatibility http://www.mulesoft.org/schema/mule/compatibility/current/mule-compatibility.xsd http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/email http://www.mulesoft.org/schema/mule/email/current/mule-email.xsd">
+
+    <http:listener-config name="HTTP_Listener_Configuration" doc:name="HTTP Listener Configuration">
+        <http:listener-connection host="0.0.0.0" port="8086" />
+    </http:listener-config>
+
+    <http:request-config name="HTTP_Request_Configuration" basePath="/api/" doc:name="HTTP Request Configuration">
+        <http:request-connection host="worldtimeapi.org"/>
+    </http:request-config>
+
+    <email:smtp-config name="Email_SMTP" doc:name="Email SMTP" doc:id="74a7c3af-8cab-4ffd-86c7-22faa38042e3" >
+		<email:smtp-connection host="smtp.gmail.com" user="testmule657@gmail.com" password="Testmule657@" port="587">
+			<email:properties >
+				<email:property key="mail.smtp.starttls.enable" value="true" />
+			</email:properties>
+		</email:smtp-connection>
+	</email:smtp-config>
+	<flow name="3rd_projFlow">
+        <http:listener config-ref="HTTP_Listener_Configuration" path="/worldapi" allowedMethods="GET" doc:name="HTTP">
+        </http:listener>
+		<ee:transform doc:name="Transform Message" doc:id="3955eef4-32a2-4409-ad5c-b045e26ca5e3" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+{
+	"message": "output received"
+}]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+
+    </flow>
+
+</mule>
